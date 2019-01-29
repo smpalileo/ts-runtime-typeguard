@@ -1,8 +1,8 @@
 # ts-runtime-typeguard
 
-This package is primarily intended for use with the Angular6-json-schema-form package (npmjs.com/package/angular6-json-schema-form)
+This package is primarily intended for use with the [Angular6-json-schema-form](npmjs.com/package/angular6-json-schema-form) package 
 
-Using gcanti's io-ts dependency (github.com/gcanti/io-ts), this module runs through a json form schema and builds
+Using gcanti's [io-ts dependency](github.com/gcanti/io-ts), this module runs through a json form schema and builds
 a runtime interface by wrapping the properties in classes that act as runtime types
 
 It can also be used for data-to-data comparison.
@@ -11,6 +11,9 @@ It can also be used for data-to-data comparison.
 
 # Usage 
 
+## for schema-to-data matching: ##
+
+``` js
 const typeguard = require('../src/index');
 
 var tg = new typeguard.Typeguard();
@@ -58,11 +61,13 @@ var data = {
     }
 
 var check = tg.checkType(schema, data, 'schema');
+```
 
-check will either be true or false
+### check will either be true or false ###
 
-For data-to-data matching:
+## For data-to-data matching: ##
 
+``` js
 var data1 = {
         'first_name': 'Jane',
         'last_name': 'Doe',
@@ -86,3 +91,5 @@ var data2 = {
     }
 
 var check = tg.checkType(data1, data2, 'data');
+```
+### check will either be true or false ###
