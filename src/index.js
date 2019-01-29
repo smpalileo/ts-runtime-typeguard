@@ -10,14 +10,16 @@ class Typeguard {
     /***************** GENERICS *************************/
     checkType(guard, data, option) {
         let typecheck = this.typeguard(guard, option);
-        console.log('typecheck', typecheck);
-        console.log('data', data);
+        // console.log('typecheck', typecheck);
+        // console.log('data', data);
         const result = typecheck.decode(data);
+        console.log('result: ', result)
         try {
             ThrowReporter_1.ThrowReporter.report(result);
             return true;
         }
         catch (err) {
+            // console.log('error: ', err)
             return false;
         }
     }

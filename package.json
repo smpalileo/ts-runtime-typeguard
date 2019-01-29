@@ -1,0 +1,28 @@
+{
+  "name": "ts-runtime-typeguard",
+  "version": "1.0.0",
+  "description": "Typescript runtime typeguard primarily for angular6-json-schema-form ",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smpalileo/ts-runtime-typeguard.git"
+  },
+  "keywords": [
+    "typescript",
+    "runtime",
+    "typeguard"
+  ],
+  "author": "Seth Charles Palileo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/smpalileo/ts-runtime-typeguard/issues"
+  },
+  "homepage": "https://github.com/smpalileo/ts-runtime-typeguard#readme",
+  "dependencies": {
+    "io-ts": "^1.7.1",
+    "lodash": "^4.17.11"
+  }
+}
