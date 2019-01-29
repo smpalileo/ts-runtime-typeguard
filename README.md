@@ -62,9 +62,6 @@ var data = {
 
 var check = tg.checkType(schema, data, 'schema');
 ```
-
-### check will either be true or false ###
-
 ## For data-to-data matching: ##
 
 ``` js
@@ -93,4 +90,7 @@ var data2 = {
 var check = tg.checkType(data1, data2, 'data');
 ```
 
-### check will either be true or false ###
+### Check will either be true or false ###
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
