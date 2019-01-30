@@ -14,7 +14,7 @@ It can also be used for data-to-data comparison.
 ## for schema-to-data matching: ##
 
 ``` js
-const typeguard = require('../src/index');
+const typeguard = require('ts-runtime-typeguard');
 
 var tg = new typeguard.Typeguard();
 
@@ -91,6 +91,21 @@ var check = tg.checkType(data1, data2, 'data');
 ```
 
 ### Check will either be true or false ###
+
+## For typescript use ##
+
+``` js
+import * as TypeGuard from 'ts-runtime-typeguard'
+public tg;
+
+constructor(){
+    this.tg = new TypeGuard();
+}
+
+tg.checkType(data1, data2, 'data');
+
+```
+
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
