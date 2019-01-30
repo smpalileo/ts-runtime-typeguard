@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const typeGuard = require("io-ts");
 const ThrowReporter_1 = require("io-ts/lib/ThrowReporter");
 const _ = require("lodash");
-export class Typeguard {
+class Typeguard {
     constructor() {
         this.optionals = {};
     }
