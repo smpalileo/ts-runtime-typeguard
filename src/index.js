@@ -10,24 +10,25 @@ class Typeguard {
     /***************** GENERICS *************************/
     checkType(guard, data, option) {
         let typecheck = this.typeguard(guard, option);
-        // console.log('typecheck', typecheck);
-        // console.log('data', data);
         const result = typecheck.decode(data);
-        console.log('result: ', result)
         try {
             ThrowReporter_1.ThrowReporter.report(result);
             return true;
         }
         catch (err) {
-            // console.log('error: ', err)
             return false;
         }
     }
     typeguard(json, option) {
         let build, required, data, guard;
         if (option === 'schema') {
-            build = this.clone(json.schema.properties);
-            required = this.clone(json.schema.required);
+            try{
+                build = this.clone(json.schema.properties);
+                required = this.clone(json.schema.required);
+            }
+            catch (error){
+                console.log(error);
+            }
         }
         else {
             data = this.clone(json);
