@@ -3,7 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const typeGuard = require("io-ts");
 const ThrowReporter_1 = require("io-ts/lib/ThrowReporter");
 const _ = require("lodash");
-const web3 = require("web3");
+const Web3 = require("web3");
+const web3 = new Web3();
 class Typeguard {
     constructor() {
         this.optionals = {};
@@ -11,7 +12,7 @@ class Typeguard {
     /***************** GENERICS *************************/
     toAscii(str){
         try {
-            return JSON.parse(web3.toAscii(str))
+            return JSON.parse(web3._extend.utils.toAscii(str))
         }
         catch (err) {
             console.log('Hex string invalid');
@@ -19,7 +20,7 @@ class Typeguard {
     }
     toHex(str){
         try {
-            return web3.toHex(JSON.stringify(str));
+            return web3._extend.utils.toHex(JSON.stringify(str));
         }
         catch (err) {
             console.log('JSON input invalid');
