@@ -20,12 +20,14 @@ class Typeguard {
         }
     }
     typeguard(json, option) {
-        let build, required, data, guard;
+        let build, required, data, guard, formModel, partial;
         if (option === 'schema') {
             try{
                 build = this.clone(json.schema.properties);
                 required = this.clone(json.schema.required);
                 build = this.removeButtons(build);
+                formModel = typeGuard.type(this.createLiveInterface(build, true, required));
+                partial = typeGuard.partial(this.optionals);
             }
             catch (error){
                 console.log(error);
@@ -34,8 +36,6 @@ class Typeguard {
         else {
             data = this.clone(json);
         }
-        let formModel = typeGuard.type(this.createLiveInterface(build, true, required));
-        let partial = typeGuard.partial(this.optionals);
         (option == 'schema') ? guard = typeGuard.exact(typeGuard.intersection([formModel, partial])) : guard = typeGuard.type(this.raiseTypes(data));
         return guard;
     }
