@@ -22,7 +22,7 @@ class Typeguard {
             return web3.toHex(JSON.stringify(str));
         }
         catch (err) {
-            console.log('Hex string invalid');
+            console.log('JSON input invalid');
         }
     }
     checkType(guard, data, option) {
