@@ -189,6 +189,18 @@ class Typeguard {
         }
         return dataGuard;
     }
+    /**************** LOGGING MODE ****************/
+    // ALWAYS RETURNS FALSE
+        testGuard(guard, data, option) {
+        let typecheck = this.typeguard(guard, option);
+        console.log('schema: ', guard);
+        console.log('data: ', data);
+        console.log('interface', typecheck);
+        const result = typecheck.decode(data);
+        console.log('result', result);
+        return false;
+    }
+    /********************************************/
 }
 module.exports = Typeguard;
 /*********************************************************************/

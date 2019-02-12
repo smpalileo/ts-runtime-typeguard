@@ -1,6 +1,6 @@
 {
   "name": "ts-runtime-typeguard",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Typescript runtime typeguard primarily for angular6-json-schema-form",
   "main": "src/index.js",
   "scripts": {
