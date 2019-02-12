@@ -76,8 +76,17 @@ class Typeguard {
             temp[key] = this.clone(obj[key]);
         return temp;
     }
+    checkUnique(props, form){
+        let uniqueList = [];
+        let result;
+        for (let key in Object.keys(props)){
+            uniqueList.push(props[key]['form'][0]);
+        }
+        result = _.isEqual(uniqueList, form);
+        return result;
+    }
     /****************************************************/
-    /*************** GUARDING FORM MODEL ****************/
+    /************ GUARDING SCHEMA TO DATA ***************/
     getTypes(obj) {
         let temp = this.clone(obj);
         for (let key of Object.keys(obj)) {
@@ -147,7 +156,7 @@ class Typeguard {
         return _.omit(liveInterface, omit);
     }
     /**********************************************************************/
-    /*************** GUARDING DATA MODEL **********************************/
+    /*************** GUARDING DATA TO DATA ********************************/
     switchToTypeGuards(obj) {
         for (let value of Object.values(obj)) {
             switch (true) {
