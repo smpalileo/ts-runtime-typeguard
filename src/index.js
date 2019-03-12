@@ -37,7 +37,7 @@ class Typeguard {
             return false;
         }
     }
-    
+
     typeguard(json, option) {
         let build, required, data, guard, formModel, partial;
         try{
@@ -50,18 +50,17 @@ class Typeguard {
             switch (option) {
                 case 'schema':
                     guard = typeGuard.exact(typeGuard.intersection([formModel, partial]));
-                    break;
+                    return guard;
                 case 'data':
                     guard = typeGuard.type(this.raiseTypes(data));
-                    break;
+                    return guard;
                 case 'filter':
                     guard = typeGuard.type(typeGuard.intersection([formModel, partial]));
-                    break;
+                    return guard;
                 default:
                     guard = typeGuard.type(this.raiseTypes(data));
-                    break;
-                }
-            return guard;
+                    return guard;
+            }
         }
         catch (error){
             return error;
