@@ -37,26 +37,37 @@ class Typeguard {
             return false;
         }
     }
+    
     typeguard(json, option) {
         let build, required, data, guard, formModel, partial;
-        if (option === 'schema') {
-            try{
-                build = this.clone(json.schema.properties);
-                required = this.clone(json.schema.required);
-                build = this.removeButtons(build);
-                formModel = typeGuard.type(this.createLiveInterface(build, true, required));
-                partial = typeGuard.partial(this.optionals);
-            }
-            catch (error){
-                console.log(error);
-            }
-        }
-        else {
+        try{
+            build = this.clone(json.schema.properties);
+            required = this.clone(json.schema.required);
+            build = this.removeButtons(build);
+            formModel = typeGuard.type(this.createLiveInterface(build, true, required));
+            partial = typeGuard.partial(this.optionals);
             data = this.clone(json);
+            switch (option) {
+                case 'schema':
+                    guard = typeGuard.exact(typeGuard.intersection([formModel, partial]));
+                    break;
+                case 'data':
+                    guard = typeGuard.type(this.raiseTypes(data));
+                    break;
+                case 'filter':
+                    guard = typeGuard.type(typeGuard.intersection([formModel, partial]));
+                    break;
+                default:
+                    guard = typeGuard.type(this.raiseTypes(data));
+                    break;
+                }
+            return guard;
         }
-        (option == 'schema') ? guard = typeGuard.exact(typeGuard.intersection([formModel, partial])) : guard = typeGuard.type(this.raiseTypes(data));
-        return guard;
+        catch (error){
+            return error;
+        }
     }
+
     removeButtons(build) {
         let omit = [];
         let newBuild;
