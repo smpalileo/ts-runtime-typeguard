@@ -15,7 +15,7 @@ class Typeguard {
             return JSON.parse(web3._extend.utils.toAscii(str))
         }
         catch (err) {
-            console.log('Hex string invalid');
+            console.log('Hex string invalid, of type: ', typeof str);
         }
     }
     toHex(str){
