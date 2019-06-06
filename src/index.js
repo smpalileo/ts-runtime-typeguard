@@ -93,7 +93,7 @@ class Typeguard {
     getTypes(obj) {
         let temp = this.clone(obj);
         for (let key of Object.keys(obj)) {
-            (obj[key].enum) ? temp[key] = 'enum' : temp[key] = temp[key].type;
+            temp[key] = (obj[key].enum) ? 'enum' : temp[key].type;
         }
         return temp;
     }
@@ -139,11 +139,11 @@ class Typeguard {
         return typeGuard.array(handle);
     }
     handleEnum(arr) {
+        arr.push('');
         let union = [];
         for (let key in arr) {
             union[key] = typeGuard.literal(arr[key]);
         }
-        union.push(typeGuard.literal(''));
         return union;
     }
     createLiveInterface(build, flag, required) {
@@ -185,7 +185,8 @@ class Typeguard {
         let dataGuard = this.clone(obj);
         for (let key of Object.keys(dataGuard)) {
             if (_.isArray(dataGuard[key])) {
-                (dataGuard[key].length > 0) ? dataGuard[key] = typeGuard.array(this.switchToTypeGuards({ [key]: dataGuard[key][0] })) : dataGuard[key] = typeGuard.array(typeGuard.any);
+                dataGuard[key] = (dataGuard[key].length > 0) ?
+                  typeGuard.array(this.switchToTypeGuards({ [key]: dataGuard[key][0] })) : typeGuard.array(typeGuard.any);
             }
             else {
                 dataGuard[key] = this.switchToTypeGuards({ [key]: dataGuard[key] });
