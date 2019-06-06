@@ -143,6 +143,7 @@ class Typeguard {
         for (let key in arr) {
             union[key] = typeGuard.literal(arr[key]);
         }
+        union.push(typeGuard.literal(''));
         return union;
     }
     createLiveInterface(build, flag, required) {
